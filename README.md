@@ -1,5 +1,5 @@
 # azure-terraform-firezone
-Terraform module to deploy a Firezone VPN server in Azure.
+Terraform module to deploy a Firezone VPN server in Azure. For more information on Firezone visit https://firezone.dev
 
 ## Example Usage
 ```hcl
