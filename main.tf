@@ -93,7 +93,7 @@ resource "azurerm_public_ip" "firezone_vm_pip" {
 
 # A record for Firezone VM public IP
 resource "azurerm_dns_a_record" "firezone_vm" {
-  count               = var.enable_az_dns== true ? 1 : 0
+  count               = var.enable_az_dns == true ? 1 : 0
   name                = var.hostname
   zone_name           = var.domain_name
   resource_group_name = var.dns_resource_group_name

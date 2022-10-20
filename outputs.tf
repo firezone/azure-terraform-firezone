@@ -45,8 +45,3 @@ output "firezone_db_password" {
   sensitive   = true
 }
 
-output "firezone_aad_sp_password" {
-  description = "Password for the Firezone Azure AD service principal."
-  value       = azuread_service_principal_password.firezonevpn_aad_sp[0].value
-  sensitive   = true
-}
