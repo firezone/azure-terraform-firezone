@@ -1,44 +1,49 @@
+# azure-terraform-firezone
+Terraform module to deploy a Firezone VPN server in Azure.
+
+## Example Usage
+```hcl
+module "azure-terraform-firezone" {
+  source = "github.com/mwstamant/azure-terraform-firezone"
+
+  location                = "Canada Central"
+  resource_group_name     = "firezone-dev-rg"
+  hostname                = "firezone"
+  domain_name             = "example.com"
+  admin_email             = "admin@example.com"
+  subnet_id               = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/network-rg/providers/Microsoft.Network/virtualNetworks/default-vnet/subnets/default-snet"
+  keyvault_id             = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/keyvault-rg/providers/Microsoft.KeyVault/vaults/myexamplekv"
+  dns_resource_group_name = "dns-rg"
+
+  resource_tags = {
+    "Owner"       = "John Smith"
+    "Contact"     = "jsmith@example.com"
+    "Environment" = "Production"
+  }
+}
+```
+
+## Technology Stack
+<a href="https://www.terraform.io/">
+  <img src="https://img.shields.io/badge/HashiCorp_Terraform-v1.3.3-purple?&logo=terraform" alt="hashicorp/terraform">
+</a>
+<a href="https://www.gnu.org/software/bash/">
+  <img src="https://img.shields.io/badge/GNU_Bash-v5.2-green?&logo=gnubash&logoColor=white" alt="GNUBash">
+</a>
+
+## Terraform Providers
+<a href="https://registry.terraform.io/providers/hashicorp/azurerm">
+  <img src="https://img.shields.io/badge/hashicorp/azurerm-v3.27.0-purple?&logo=terraform" alt="hashicorp/azurerm">
+</a>
+<a href="https://registry.terraform.io/providers/hashicorp/null">
+  <img src="https://img.shields.io/badge/hashicorp/null-v3.1.1-purple?&logo=terraform" alt="hashicorp/null">
+</a>
+<a href="https://registry.terraform.io/providers/hashicorp/random">
+  <img src="https://img.shields.io/badge/hashicorp/random-v3.4.3-purple?&logo=terraform" alt="hashicorp/random">
+</a>
+
+
 <!-- BEGIN_TF_DOCS -->
-## Requirements
-
-| Name | Version |
-|------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0.0 |
-| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | =3.27.0 |
-
-## Providers
-
-| Name | Version |
-|------|---------|
-| <a name="provider_azuread"></a> [azuread](#provider\_azuread) | n/a |
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | =3.27.0 |
-| <a name="provider_random"></a> [random](#provider\_random) | n/a |
-
-
-## Resources
-
-| Name | Type |
-|------|------|
-| [azuread_application.firezonevpn_aad_app](https://registry.terraform.io/providers/hashicorp/azuread/latest/docs/resources/application) | resource |
-| [azuread_service_principal.firezonevpn_aad_sp](https://registry.terraform.io/providers/hashicorp/azuread/latest/docs/resources/service_principal) | resource |
-| [azuread_service_principal_password.firezonevpn_aad_sp](https://registry.terraform.io/providers/hashicorp/azuread/latest/docs/resources/service_principal_password) | resource |
-| [azurerm_dns_a_record.firezone_vm](https://registry.terraform.io/providers/hashicorp/azurerm/3.27.0/docs/resources/dns_a_record) | resource |
-| [azurerm_key_vault_secret.firezone_admin_password](https://registry.terraform.io/providers/hashicorp/azurerm/3.27.0/docs/resources/key_vault_secret) | resource |
-| [azurerm_key_vault_secret.firezone_db_password](https://registry.terraform.io/providers/hashicorp/azurerm/3.27.0/docs/resources/key_vault_secret) | resource |
-| [azurerm_key_vault_secret.firezonevpn_aad_sp](https://registry.terraform.io/providers/hashicorp/azurerm/3.27.0/docs/resources/key_vault_secret) | resource |
-| [azurerm_key_vault_secret.vm_password](https://registry.terraform.io/providers/hashicorp/azurerm/3.27.0/docs/resources/key_vault_secret) | resource |
-| [azurerm_linux_virtual_machine.firezone_vm](https://registry.terraform.io/providers/hashicorp/azurerm/3.27.0/docs/resources/linux_virtual_machine) | resource |
-| [azurerm_managed_disk.vm_app_disk](https://registry.terraform.io/providers/hashicorp/azurerm/3.27.0/docs/resources/managed_disk) | resource |
-| [azurerm_network_interface.firezone_vm_nic](https://registry.terraform.io/providers/hashicorp/azurerm/3.27.0/docs/resources/network_interface) | resource |
-| [azurerm_public_ip.firezone_vm_pip](https://registry.terraform.io/providers/hashicorp/azurerm/3.27.0/docs/resources/public_ip) | resource |
-| [azurerm_resource_group.firezone_rg](https://registry.terraform.io/providers/hashicorp/azurerm/3.27.0/docs/resources/resource_group) | resource |
-| [azurerm_virtual_machine_data_disk_attachment.vm_app_disk_attach](https://registry.terraform.io/providers/hashicorp/azurerm/3.27.0/docs/resources/virtual_machine_data_disk_attachment) | resource |
-| [azurerm_virtual_machine_extension.custom_script](https://registry.terraform.io/providers/hashicorp/azurerm/3.27.0/docs/resources/virtual_machine_extension) | resource |
-| [random_password.firezone_admin_password](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password) | resource |
-| [random_password.firezone_db_password](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password) | resource |
-| [random_password.vm_password](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password) | resource |
-| [random_uuid.firezonevpn_aad_app](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/uuid) | resource |
-| [azurerm_client_config.current](https://registry.terraform.io/providers/hashicorp/azurerm/3.27.0/docs/data-sources/client_config) | data source |
 
 ## Inputs
 
