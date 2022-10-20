@@ -14,9 +14,6 @@
 | <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | =3.27.0 |
 | <a name="provider_random"></a> [random](#provider\_random) | n/a |
 
-## Modules
-
-No modules.
 
 ## Resources
 
@@ -48,7 +45,7 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_admin_email"></a> [admin\_email](#input\_admin\_email) | Administrator email address. | `string` | n/a | yes |
-| <a name="input_dns_resource_group_name"></a> [dns\_resource\_group\_name](#input\_dns\_resource\_group\_name) | Resource group name containing the Azure DNS zone. | `string` | n/a | yes |
+| <a name="input_dns_resource_group_name"></a> [dns\_resource\_group\_name](#input\_dns\_resource\_group\_name) | Resource group name containing the Azure DNS zone. | `string` | n/a | if enable_az_dns=true |
 | <a name="input_domain_name"></a> [domain\_name](#input\_domain\_name) | Root Domain for Firezone VPN VM. (Domain root name only, ex. example.com) | `string` | n/a | yes |
 | <a name="input_enable_aad_app"></a> [enable\_aad\_app](#input\_enable\_aad\_app) | Enable Azure AD App registration for Firezone VPN | `bool` | `false` | no |
 | <a name="input_enable_az_dns"></a> [enable\_az\_dns](#input\_enable\_az\_dns) | Enable Azure DNS registration for Firezone VPN | `bool` | `true` | no |

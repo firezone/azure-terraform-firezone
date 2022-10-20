@@ -62,13 +62,13 @@ services:
       - .env
     environment:
       EXTERNAL_URL: https://${FQDN}
-      ADMIN_EMAIL: '${ADMIN_EMAIL}'
-      DEFAULT_ADMIN_PASSWORD: '${DEFAULT_ADMIN_PASSWORD}'
-      WIREGUARD_IPV4_ADDRESS: '${WIREGUARD_IPV4_ADDRESS}'
-      WIREGUARD_IPV4_NETWORK: '${WIREGUARD_IPV4_NETWORK}'
-      WIREGUARD_ALLOWED_IPS: '${WIREGUARD_ALLOWED_IPS}'
-      WIREGUARD_DNS: '${WIREGUARD_DNS}'
-      DATABASE_PASSWORD: '${DATABASE_PASSWORD}'
+      ADMIN_EMAIL: \"${ADMIN_EMAIL}\"
+      DEFAULT_ADMIN_PASSWORD: \"${DEFAULT_ADMIN_PASSWORD}\"
+      WIREGUARD_IPV4_ADDRESS: \"${WIREGUARD_IPV4_ADDRESS}\"
+      WIREGUARD_IPV4_NETWORK: \"${WIREGUARD_IPV4_NETWORK}\"
+      WIREGUARD_ALLOWED_IPS: \"${WIREGUARD_ALLOWED_IPS}\"
+      WIREGUARD_DNS: \"${WIREGUARD_DNS}\"
+      DATABASE_PASSWORD: \"${DATABASE_PASSWORD}\"
     cap_add:
       # Needed for WireGuard and firewall support.
       - NET_ADMIN
@@ -90,7 +90,7 @@ services:
     environment:
       POSTGRES_DB: firezone
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: '${DATABASE_PASSWORD}'
+      POSTGRES_PASSWORD: \"${DATABASE_PASSWORD}\"
     deploy:
       <<: *default-deploy
       update_config:
