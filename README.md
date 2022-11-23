@@ -1,3 +1,5 @@
+**Disclaimer**: This is a community-provided module and is currently unsupported by the Firezone team.
+
 # azure-terraform-firezone
 Terraform module to deploy a Firezone VPN server in Azure. For more information on Firezone visit https://firezone.dev
 
